@@ -1,0 +1,48 @@
+body{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.buttons{
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    
+   
+
+    
+}
+
+.numbers{
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    
+
+}
+.operators{
+    display: flex;
+    flex-direction: column;
+    padding-top: 140px;
+}
+#zero{
+    align-items:center;
+}
+
+button{
+    height: 50px;
+    width: 75px;
+    margin: 10px;
+
+}
+.display{
+    font-size: 100px;
+    width: 500px;
+    text-align: right;
+}
