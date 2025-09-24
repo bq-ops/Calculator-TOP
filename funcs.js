@@ -3,7 +3,7 @@ let operation;
 let final = 0;
 let currunt;
 let newNum;
-let numberArr = [0, '', 0];
+let numberArr;
 let operator; 
 let justCalculated = false;
 
@@ -159,7 +159,8 @@ clear.addEventListener('click', function(){
 
 div.addEventListener('click', function(){
     currunt = lbl.textContent;
-    numberArr = currunt.split(" ").filter(item => item !== "").reverse();
+    numberArr = currunt.split(" ").filter(item => item.trim() !== "").reverse();
+    console.log(numberArr)
     
     if(numberArr.length == 3){
         result = Number(numberArr[0]);
@@ -183,7 +184,7 @@ multi.addEventListener('click', function(){
 
 
     currunt = lbl.textContent;
-    numberArr = currunt.split(" ").filter(item => item !== "").reverse();
+    numberArr = currunt.split(" ").filter(item => item.trim() !== "");
 
 
     if (numberArr.length == 3){
@@ -201,10 +202,10 @@ ad.addEventListener('click', function(){
 
 
     currunt = lbl.textContent;
-    numberArr = currunt.split(" ").filter(item => item !== "").reverse();
+    numberArr = currunt.split(" ").filter(item => item.trim() !== "");
+    
 
-
-    if (numberArr.length == 3){
+    if (numberArr.length === 3){
         result = Number(numberArr[0]);
         operator = numberArr[1];
         newNum = Number(numberArr[2]);
@@ -212,15 +213,16 @@ ad.addEventListener('click', function(){
         lbl.textContent = final + " + ";
     }else{
         lbl.textContent = currunt + " " + '+' + " ";
+        console.log(numberArr)
     }
 });
 sub.addEventListener('click', function(){
 
     currunt = lbl.textContent;
-    numberArr = currunt.split(" ").filter(item => item !== "").reverse();
-    alert(numberArr)
+    numberArr = currunt.split(" ").filter(item => item.trim() !== "");
 
-    if (numberArr.length == 3){
+
+    if (numberArr.length === 3){
         newNum = Number(numberArr[0]);
         operator = numberArr[1];
         result = Number(numberArr[2]);
@@ -235,12 +237,19 @@ eq.addEventListener('click', function(){
 
 
     currunt = lbl.textContent;
-    numberArr = currunt.split(" ").filter(item => item !== "").reverse();
-
+    numberArr = currunt.split(" ").filter(item => item.trim() !== "");
 
     result = Number(numberArr[0]);
     operator = numberArr[1];
     newNum = Number(numberArr[2]);
+    if (operator == '/' && newNum === 0){
+        
+            alert("Hell Naw we are not doing this. try something else")
+            currunt = 0;
+            lbl.textContent = '';
+            return;
+
+    }
 
 
     final = operate(result, newNum, operator);
