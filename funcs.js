@@ -1,10 +1,11 @@
 let result = 0;
 let operation;
 let final = 0;
-let currunt = 0;
-let newNum = 0;
-let numberArr = [];
+let currunt;
+let newNum;
+let numberArr = [0, '', 0];
 let operator; 
+let justCalculated = false;
 
 let lbl = document.getElementById("display")
 
@@ -56,44 +57,96 @@ let eq = document.getElementById("=")
 
 zero.addEventListener('click', function(){
     currunt = lbl.textContent;
-    lbl.textContent = currunt + '0';
+    if(justCalculated){
+        lbl.textContent = '0';
+        justCalculated = false;
+    } else {
+        lbl.textContent += '0';
+    }
 });
 
 one.addEventListener('click', function(){
     currunt = lbl.textContent;
-    lbl.textContent = currunt + '1';
+    if(justCalculated){
+        lbl.textContent = '1';
+        justCalculated = false;
+    } else {
+        lbl.textContent += '1';
+    }
+
 });
 tow.addEventListener('click', function(){
     currunt = lbl.textContent;
-    lbl.textContent = currunt + '2';
+    if(justCalculated){
+        lbl.textContent = '2';
+        justCalculated = false;
+    } else {
+        lbl.textContent += '2';
+    }
 });
 three.addEventListener('click', function(){
 currunt = lbl.textContent;
-    lbl.textContent = currunt + '3';
+if(justCalculated){
+        lbl.textContent = '3';
+        justCalculated = false;
+    } else {
+        lbl.textContent += '3';
+    }
 });
 four.addEventListener('click', function(){
     currunt = lbl.textContent;
-    lbl.textContent = currunt + '4';
+    if(justCalculated){
+        lbl.textContent = '4';
+        justCalculated = false;
+    } else {
+        lbl.textContent += '4';
+    }
 });
 five.addEventListener('click', function(){
    currunt = lbl.textContent;
-    lbl.textContent = currunt + '5';
+   if(justCalculated){
+        lbl.textContent = '5';
+        justCalculated = false;
+    } else {
+        lbl.textContent += '5';
+    }
 });
 six.addEventListener('click', function(){
     currunt = lbl.textContent;
-    lbl.textContent = currunt + '6';
+    if(justCalculated){
+        lbl.textContent = '6';
+        justCalculated = false;
+    } else {
+        lbl.textContent += '6';
+    }
 });
 seven.addEventListener('click', function(){
     currunt = lbl.textContent;
-    lbl.textContent = currunt + '7';
+    if(justCalculated){
+        lbl.textContent = '7';
+        justCalculated = false;
+    } else {
+        lbl.textContent += '7';
+    }
+    
 });
 eight.addEventListener('click', function(){
     currunt = lbl.textContent;
-    lbl.textContent = currunt + '8';
+    if(justCalculated){
+        lbl.textContent = '8';
+        justCalculated = false;
+    } else {
+        lbl.textContent += '8';
+    }
 });
 nine.addEventListener('click', function(){
     currunt = lbl.textContent;
-    lbl.textContent = currunt + '9';
+    if(justCalculated){
+        lbl.textContent = '9';
+        justCalculated = false;
+    } else {
+        lbl.textContent += '9';
+    }
 });
 
 
@@ -106,15 +159,14 @@ clear.addEventListener('click', function(){
 
 div.addEventListener('click', function(){
     currunt = lbl.textContent;
-    numberArr = currunt.split(" ").filter(item => item !== "")
-
-    if(numberArr.length === 3){
+    numberArr = currunt.split(" ").filter(item => item !== "").reverse();
+    
+    if(numberArr.length == 3){
         result = Number(numberArr[0]);
         operator = numberArr[1];
         newNum = Number(numberArr[2]);
     
-
-        if (operator === '/' && newNum === 0){
+        if (newNum == 0){
             alert("Hell Naw we are not doing this. try something else")
             currunt = 0;
             lbl.textContent = '';
@@ -128,8 +180,12 @@ div.addEventListener('click', function(){
 });
 
 multi.addEventListener('click', function(){
+
+
     currunt = lbl.textContent;
-    numberArr = currunt.split(" ").filter(item => item !== "")
+    numberArr = currunt.split(" ").filter(item => item !== "").reverse();
+
+
     if (numberArr.length == 3){
         result = Number(numberArr[0]);
         operator = numberArr[1];
@@ -142,8 +198,12 @@ multi.addEventListener('click', function(){
     
 });
 ad.addEventListener('click', function(){
+
+
     currunt = lbl.textContent;
-    numberArr = currunt.split(" ").filter(item => item !== "")
+    numberArr = currunt.split(" ").filter(item => item !== "").reverse();
+
+
     if (numberArr.length == 3){
         result = Number(numberArr[0]);
         operator = numberArr[1];
@@ -155,12 +215,15 @@ ad.addEventListener('click', function(){
     }
 });
 sub.addEventListener('click', function(){
+
     currunt = lbl.textContent;
-    numberArr = currunt.split(" ").filter(item => item !== "")
+    numberArr = currunt.split(" ").filter(item => item !== "").reverse();
+    alert(numberArr)
+
     if (numberArr.length == 3){
-        result = Number(numberArr[0]);
+        newNum = Number(numberArr[0]);
         operator = numberArr[1];
-        newNum = Number(numberArr[2]);
+        result = Number(numberArr[2]);
         final = operate(result, newNum, operator);
         lbl.textContent = final + " - ";
     }else{
@@ -169,27 +232,22 @@ sub.addEventListener('click', function(){
 });
 
 eq.addEventListener('click', function(){
+
+
     currunt = lbl.textContent;
-    numberArr = currunt.split(" ").filter(item => item !== "")
+    numberArr = currunt.split(" ").filter(item => item !== "").reverse();
+
+
     result = Number(numberArr[0]);
     operator = numberArr[1];
     newNum = Number(numberArr[2]);
+
+
     final = operate(result, newNum, operator);
     lbl.textContent = Math.round(final  * 100)/100;
 
-    if (final !== ''){
 
-    buttons.addEventListener('click', function(event){
-        if (event.target.tagName === 'BUTTON') {
-            currunt = '';
-            result = 0;
-            newNum = 0;
-            operator = '';
-            lbl.textContent = '';
-        }
-
-    });
-    }
+    justCalculated = true;
 
 });
 

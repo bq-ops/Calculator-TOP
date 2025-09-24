@@ -15,11 +15,6 @@ body{
     flex-wrap: nowrap;
     
 }
-.background{
-    color: #000000;
-    width: 600px;
-    height: 400px;
-}
 
 .numbers{
     display: flex;
